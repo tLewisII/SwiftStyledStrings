@@ -10,6 +10,8 @@
 		DBB9224F19873D5100735C77 /* SwiftStyledStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = DBB9224E19873D5100735C77 /* SwiftStyledStrings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBB9225519873D5100735C77 /* SwiftStyledStrings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB9224919873D5100735C77 /* SwiftStyledStrings.framework */; };
 		DBB9225C19873D5100735C77 /* SwiftStyledStringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9225B19873D5100735C77 /* SwiftStyledStringsTests.swift */; };
+		DBB9226719873D7B00735C77 /* Monoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9226519873D7B00735C77 /* Monoid.swift */; };
+		DBB9226819873D7B00735C77 /* StringAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9226619873D7B00735C77 /* StringAttribute.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		DBB9225419873D5100735C77 /* SwiftStyledStringsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftStyledStringsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB9225A19873D5100735C77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBB9225B19873D5100735C77 /* SwiftStyledStringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftStyledStringsTests.swift; sourceTree = "<group>"; };
+		DBB9226519873D7B00735C77 /* Monoid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Monoid.swift; path = Source/Monoid.swift; sourceTree = "<group>"; };
+		DBB9226619873D7B00735C77 /* StringAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringAttribute.swift; path = Source/StringAttribute.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,7 @@
 		DBB9224B19873D5100735C77 /* SwiftStyledStrings */ = {
 			isa = PBXGroup;
 			children = (
+				DBB9226919873D8200735C77 /* Source */,
 				DBB9224E19873D5100735C77 /* SwiftStyledStrings.h */,
 				DBB9224C19873D5100735C77 /* Supporting Files */,
 			);
@@ -100,6 +105,15 @@
 				DBB9225A19873D5100735C77 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DBB9226919873D8200735C77 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				DBB9226519873D7B00735C77 /* Monoid.swift */,
+				DBB9226619873D7B00735C77 /* StringAttribute.swift */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +224,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBB9226719873D7B00735C77 /* Monoid.swift in Sources */,
+				DBB9226819873D7B00735C77 /* StringAttribute.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
