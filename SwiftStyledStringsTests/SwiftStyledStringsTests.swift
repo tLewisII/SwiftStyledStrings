@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+import SwiftStyledStrings
 
 class SwiftStyledStringsTests: XCTestCase {
     
@@ -21,16 +22,33 @@ class SwiftStyledStringsTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func testAppend() {
+        let normalDict = [
+            NSFontAttributeName             : UIFont.boldSystemFontOfSize(CGFloat(12)),
+            NSForegroundColorAttributeName  : UIColor.redColor(),
+            NSUnderlineStyleAttributeName   : NSUnderlineStyle.StyleSingle.toRaw()
+        ]
+        let attribute:StringAttribute = .Font(UIFont.boldSystemFontOfSize(CGFloat(12)))
+            <> .FgColor(UIColor.redColor())
+            <> .Underline(.StyleSingle)
+        
+        XCTAssert(normalDict == attribute.attributeDict(), "Should be equal")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
+    func testBuild() {
+        let normalDict = [
+            NSFontAttributeName             : UIFont.boldSystemFontOfSize(CGFloat(12)),
+            NSForegroundColorAttributeName  : UIColor.redColor(),
+            NSUnderlineStyleAttributeName   : NSUnderlineStyle.StyleSingle.toRaw()
+        ]
+        
+        let attribute:StringAttribute = .Font(UIFont.boldSystemFontOfSize(CGFloat(12)))
+            <> .FgColor(UIColor.redColor())
+            <> .Underline(.StyleSingle)
+        
+        let s1 = attribute.build("This is a string")
+        let s2 = NSAttributedString(string:"This is a string", attributes:normalDict)
+        XCTAssert(s1 == s2, "Should be equal")
     }
     
 }
