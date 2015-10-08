@@ -23,10 +23,10 @@ class SwiftStyledStringsTests: XCTestCase {
     }
     
     func testAppend() {
-        let normalDict = [
+        let normalDict:[String:NSObject] = [
             NSFontAttributeName             : UIFont.boldSystemFontOfSize(CGFloat(12)),
             NSForegroundColorAttributeName  : UIColor.redColor(),
-            NSUnderlineStyleAttributeName   : NSUnderlineStyle.StyleSingle.toRaw()
+            NSUnderlineStyleAttributeName   : NSUnderlineStyle.StyleSingle.rawValue
         ]
         let attribute:StringAttribute = .Font(UIFont.boldSystemFontOfSize(CGFloat(12)))
             <> .FgColor(UIColor.redColor())
@@ -39,7 +39,7 @@ class SwiftStyledStringsTests: XCTestCase {
         let normalDict = [
             NSFontAttributeName             : UIFont.boldSystemFontOfSize(CGFloat(12)),
             NSForegroundColorAttributeName  : UIColor.redColor(),
-            NSUnderlineStyleAttributeName   : NSUnderlineStyle.StyleSingle.toRaw()
+            NSUnderlineStyleAttributeName   : NSUnderlineStyle.StyleSingle.rawValue
         ]
         
         let attribute:StringAttribute = .Font(UIFont.boldSystemFontOfSize(CGFloat(12)))

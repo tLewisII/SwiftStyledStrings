@@ -14,11 +14,11 @@ public protocol Monoid {
     func mappend(a:M) -> M
 }
 
-public operator infix <> {
+infix operator <> {
 associativity left
 }
 
-@infix public func <><A:Monoid where A.M == A>(lhs:A, rhs:A) -> A {
+public func <><A:Monoid where A.M == A>(lhs:A, rhs:A) -> A {
     return lhs.mappend(rhs)
 }
 
@@ -43,7 +43,7 @@ extension Array : Monoid {
     
     public func mappend(a:M) -> M {
         var lhs = Array(self)
-        lhs.extend(a)
+        lhs.appendContentsOf(a)
         return lhs
     }
 }
@@ -61,7 +61,7 @@ extension Dictionary : Monoid  {
         }
         
         for (key, val) in a {
-            if !lhs[key] {
+            if !(lhs[key] != nil) {
                 lhs.updateValue(val, forKey: key)
             }
         }

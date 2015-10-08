@@ -78,39 +78,38 @@ public enum StringAttribute {
     }
     
     
-    private func makeAttribute() -> (String, AnyObject) {
+    private func makeAttribute() -> (String, NSObject) {
         switch self {
-        case let .Font(v):                  return (self.key(), v)
-        case let .ParagraphStyle(v):        return (self.key(), v)
-        case let .BgColor(v):               return (self.key(), v)
-        case let .FgColor(v):               return (self.key(), v)
-        case let .Ligature(v):              return (self.key(), v)
-        case let .Kern(v):                  return (self.key(), v)
-        case let .StrikeThrough(v):         return (self.key(), v.toRaw())
-        case let .Underline(v):             return (self.key(), v.toRaw())
-        case let .StrokeWidth(v):           return (self.key(), v)
-        case let .Shadow(v):                return (self.key(), v)
-        case let .VerticalGlyph(v):         return (self.key(), v)
-        case let .TextEffect(v):            return (self.key(), NSTextEffectLetterpressStyle)
-        case let .Attachment(v):            return (self.key(), v)
-        case let .Link(v):                  return (self.key(), v)
-        case let .BaselineOffset(v):        return (self.key(), v)
-        case let .UnderlineColor(v):        return (self.key(), v)
-        case let .StrikeThroughColor(v):    return (self.key(), v)
-        case let .Obliqueness(v):           return (self.key(), v)
-        case let .Expansion(v):             return (self.key(), v)
-        case let .WritingDirection(v):      return (self.key(), v.map{$0.toRaw()})
+        case let .Font(v):                  return (self.key() as String, v)
+        case let .ParagraphStyle(v):        return (self.key() as String, v)
+        case let .BgColor(v):               return (self.key() as String, v)
+        case let .FgColor(v):               return (self.key() as String, v)
+        case let .Ligature(v):              return (self.key() as String, v)
+        case let .Kern(v):                  return (self.key() as String, v)
+        case let .StrikeThrough(v):         return (self.key() as String, v.rawValue)
+        case let .Underline(v):             return (self.key() as String, v.rawValue)
+        case let .StrokeWidth(v):           return (self.key() as String, v)
+        case let .Shadow(v):                return (self.key() as String, v)
+        case let .VerticalGlyph(v):         return (self.key() as String, v)
+        case     .TextEffect(_):            return (self.key() as String, NSTextEffectLetterpressStyle)
+        case let .Attachment(v):            return (self.key() as String, v)
+        case let .Link(v):                  return (self.key() as String, v)
+        case let .BaselineOffset(v):        return (self.key() as String, v)
+        case let .UnderlineColor(v):        return (self.key() as String, v)
+        case let .StrikeThroughColor(v):    return (self.key() as String, v)
+        case let .Obliqueness(v):           return (self.key() as String, v)
+        case let .Expansion(v):             return (self.key() as String, v)
+        case let .WritingDirection(v):      return (self.key() as String, v.map{$0.rawValue})
         default:                            return ("", "")
         }
     }
     
     
-    public func attributeDict() -> [String : AnyObject] {
-        var dict = [String : AnyObject]()
+    public func attributeDict() -> [String : NSObject] {
         switch self {
         case let .List(a): return a.reduce([:]) { $0 <> $1.attributeDict() }
         default:
-            let (k, v):(String, AnyObject) = self.makeAttribute()
+            let (k, v):(String, NSObject) = self.makeAttribute()
             return [k : v]
         }
     }
